@@ -4,10 +4,10 @@ export const actionTypes = {
 
 export const correctGuess = () => ({ type: actionTypes.CORRECT_GUESS });
 
-const initialState = {};
-
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
+export const successReducer = (state = false, action) => {
+  switch (action.type) {
+    case actionTypes.CORRECT_GUESS:
+      return true;
     default:
       return state;
   }
