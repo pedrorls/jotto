@@ -1,11 +1,8 @@
-import {
-  correctGuess,
-  actionTypes,
-} from "../../../store/reducers/successReducer";
+import { actions, actionTypes } from "../../../store/reducers/successReducer";
 
 describe("correctGuess", () => {
   test("returns an action with type", () => {
-    const action = correctGuess();
+    const action = actions.correctGuess();
     expect(action).toEqual({ type: actionTypes.CORRECT_GUESS });
   });
 });
