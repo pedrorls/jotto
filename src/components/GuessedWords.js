@@ -7,12 +7,10 @@ export const GuessedWords = (props) => {
       {props.guessedWords.length > 0 ? (
         <div data-test="guessed-words">
           <h3>Guessed words</h3>
-          <table>
-            <thead>
+          <table className="table table-sm">
+            <thead className="thead-light">
               <tr>
                 <th>Guess</th>
-              </tr>
-              <tr>
                 <th>Matching Letters</th>
               </tr>
             </thead>

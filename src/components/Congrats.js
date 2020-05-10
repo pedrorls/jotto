@@ -1,17 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Congrats = (props) => {
-  return (
-    <div data-test="congrats-component">
-      {props.success && (
-        <span data-test="congrats-message">
-          Congrats! You guessed the word!
-        </span>
-      )}
-    </div>
-  );
-};
+export const Congrats = (props) => (
+  <div data-test="congrats-component">
+    {props.success && (
+      <div data-test="congrats-message" className="alert alert-success">
+        Congrats! You guessed the word!
+      </div>
+    )}
+  </div>
+);
 
 Congrats.defaultProps = {
   success: false,
