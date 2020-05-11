@@ -12,13 +12,12 @@ describe("Input component", () => {
   describe("when word has not been guessed", () => {
     let wrapper;
     beforeEach(() => {
-      const initialState = { success: false };
-      wrapper = setup();
+      const initialState = { successReducer: false };
+      wrapper = setup(initialState);
     });
 
     test("renders component without errors", () => {
       const component = findByTestAttr(wrapper, "input-component");
-      console.log(component);
       expect(component.length).toBe(1);
     });
 
@@ -34,10 +33,24 @@ describe("Input component", () => {
   });
 
   describe("when word has been guessed", () => {
-    test("render component without errors", () => {});
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { successReducer: true };
+      wrapper = setup(initialState);
+    });
+    test("render component without errors", () => {
+      const component = findByTestAttr(wrapper, "input-component");
+      expect(component.length).toBe(1);
+    });
 
-    test("does not renders input box", () => {});
+    test("does not renders input box", () => {
+      const component = findByTestAttr(wrapper, "input-box");
+      expect(component.length).toBe(0);
+    });
 
-    test("does not render submit button", () => {});
+    test("does not render submit button", () => {
+      const component = findByTestAttr(wrapper, "submit-button");
+      expect(component.length).toBe(0);
+    });
   });
 });
