@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 class Input extends React.Component {
   render() {
-    const { successReducer } = this.props;
+    const { success } = this.props;
     return (
       <div data-test="input-component">
-        {!successReducer && (
+        {!success && (
           <form className="form-inline">
             <input
               data-test="input-box"
@@ -28,8 +28,8 @@ class Input extends React.Component {
   }
 }
 
-const mapStateToProps = ({ successReducer }) => {
-  return { successReducer };
+const mapStateToProps = ({ success }) => {
+  return { success };
 };
 
 export default connect(mapStateToProps)(Input);

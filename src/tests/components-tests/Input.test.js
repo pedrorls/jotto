@@ -12,7 +12,7 @@ describe("Input component", () => {
   describe("when word has not been guessed", () => {
     let wrapper;
     beforeEach(() => {
-      const initialState = { successReducer: false };
+      const initialState = { success: false };
       wrapper = setup(initialState);
     });
 
@@ -35,7 +35,7 @@ describe("Input component", () => {
   describe("when word has been guessed", () => {
     let wrapper;
     beforeEach(() => {
-      const initialState = { successReducer: true };
+      const initialState = { success: true };
       wrapper = setup(initialState);
     });
     test("render component without errors", () => {

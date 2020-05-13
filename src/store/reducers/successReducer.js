@@ -6,7 +6,7 @@ export const actions = {
   correctGuess: () => ({ type: actionTypes.CORRECT_GUESS }),
 };
 
-export const successReducer = (state = false, action) => {
+export const success = (state = false, action) => {
   switch (action.type) {
     case actionTypes.CORRECT_GUESS:
       return true;
