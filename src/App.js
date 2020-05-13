@@ -1,9 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Congrats } from "./components/Congrats";
 import { GuessedWords } from "./components/GuessedWords";
 import Input from "./components/Input";
 import "./App.css";
-import { connect } from "react-redux";
 
 class App extends React.Component {
   render() {
