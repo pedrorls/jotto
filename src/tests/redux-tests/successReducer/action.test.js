@@ -1,3 +1,31 @@
-import { actionTypes } from "../../../store/reducers/successReducer";
+import moxios from "moxios";
+import { getSecretWord } from "../../../store/reducers/guessedWordsReducer";
+import { storeFactory } from "../../testsUtils";
 
-test("should ", () => {});
+describe("", () => {
+  beforeEach(() => {
+    moxios.install();
+  });
+
+  afterEach(() => {
+    moxios.uninstall();
+  });
+
+  test("should add response word to state", () => {
+    const secretWord = "party";
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: secretWord,
+      });
+    });
+
+    return store.dispatch(getSecretWord()).then(() => {
+      const newState = store.getState();
+      expect(newState.secretWord).toBe(secretWord);
+    });
+  });
+});
