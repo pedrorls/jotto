@@ -7,7 +7,11 @@ import Input from "./components/Input";
 import "./App.css";
 import { getSecretWord } from "./store/reducers/guessedWordsReducer";
 
-class App extends React.Component {
+export class UnconnectedApp extends React.Component {
+  componentDidMount() {
+    this.props.getSecretWord();
+  }
+
   render() {
     const { success, secretWord, guessedWords } = this.props;
     return (
@@ -28,4 +32,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getSecretWord })(App);
+export default connect(mapStateToProps, { getSecretWord })(UnconnectedApp);
