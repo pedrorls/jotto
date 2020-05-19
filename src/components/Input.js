@@ -3,7 +3,18 @@ import { connect } from "react-redux";
 import { guessWord } from "../store/reducers/guessedWordsReducer";
 
 export class UnconnectedInput extends React.Component {
-  onButtonClick = () => this.props.guessWord("Train");
+  constructor() {
+    super();
+    this.state = {
+      currentGuess: "",
+    };
+  }
+  onButtonClick = () => {
+    const { currentGuess } = this.state;
+    const { guessWord } = this.props;
+    guessWord(currentGuess);
+    this.setState({ currentGuess: "" });
+  };
 
   render() {
     const { success } = this.props;
@@ -15,6 +26,9 @@ export class UnconnectedInput extends React.Component {
               data-test="input-box"
               className="mb-2 mx-sm-3"
               type="text"
+              onChange={(e, { value }) =>
+                this.setState({ currentGuess: value })
+              }
               placeholder="Enter guess"
             />
             <button

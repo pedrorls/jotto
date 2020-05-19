@@ -71,14 +71,26 @@ describe("redux props", () => {
 });
 
 describe("Unconnected input", () => {
-  test("should call guessed word when button is clicked", () => {
-    const fnMock = jest.fn();
+  let fnMock;
+  let wrapper;
+  const guess = "train";
+  beforeEach(() => {
+    fnMock = jest.fn();
     const props = {
       guessWord: fnMock,
     };
-    const wrapper = shallow(<UnconnectedInput {...props} />);
+    wrapper = shallow(<UnconnectedInput {...props} />);
+
+    wrapper.setState({ currentGuess: guess });
+
     const button = findByTestAttr(wrapper, "submit-button");
     button.simulate("click");
+  });
+  test("should call guessed word when button is clicked", () => {
     expect(fnMock.mock.calls.length).toBe(1);
+  });
+
+  test("should call word method with input value as argument", () => {
+    expect(fnMock.mock.calls[0][0]).toBe(guess);
   });
 });
