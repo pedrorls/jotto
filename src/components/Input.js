@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { guessWord } from "../store/reducers/guessedWordsReducer";
 
-class Input extends React.Component {
+export class UnconnectedInput extends React.Component {
+  onButtonClick = () => this.props.guessWord("Train");
+
   render() {
     const { success } = this.props;
     return (
@@ -18,6 +20,7 @@ class Input extends React.Component {
             <button
               data-test="submit-button"
               className="btn btn-primary mb-2"
+              onClick={() => this.onButtonClick()}
               type="submit"
             >
               Submit
@@ -33,4 +36,4 @@ const mapStateToProps = ({ success }) => {
   return { success };
 };
 
-export default connect(mapStateToProps, { guessWord })(Input);
+export default connect(mapStateToProps, { guessWord })(UnconnectedInput);
