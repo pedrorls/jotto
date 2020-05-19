@@ -26,8 +26,9 @@ export class UnconnectedInput extends React.Component {
               data-test="input-box"
               className="mb-2 mx-sm-3"
               type="text"
-              onChange={(e, { value }) =>
-                this.setState({ currentGuess: value })
+              value={this.state.currentGuess}
+              onChange={(event) =>
+                this.setState({ currentGuess: event.target.value })
               }
               placeholder="Enter guess"
             />
