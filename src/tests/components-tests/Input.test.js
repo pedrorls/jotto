@@ -93,4 +93,8 @@ describe("Unconnected input", () => {
   test("should call word method with input value as argument", () => {
     expect(fnMock.mock.calls[0][0]).toBe(guess);
   });
+
+  test("should clear box after submit", () => {
+    expect(wrapper.state("currentGuess")).toBe("");
+  });
 });
